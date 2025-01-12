@@ -1,7 +1,7 @@
 export function buildRmqConnectionString(
   user: string,
   password: string,
-  host: string,
+  port: string
 ) {
-  return `amqp://${user}:${password}@${host}`;
+  return `amqp://${user}:${password}@${port}`
 }

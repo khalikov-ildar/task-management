@@ -1,0 +1,114 @@
+{"level":30,"time":1736701474129,"pid":64572,"hostname":"ildar-desktop","context":"NestFactory","msg":"Starting Nest application..."}
+{"level":30,"time":1736701474151,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmModule dependencies initialized"}
+{"level":30,"time":1736701474151,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"AlsModule dependencies initialized"}
+{"level":30,"time":1736701474152,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ThrottlerModule dependencies initialized"}
+{"level":30,"time":1736701474152,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ConfigHostModule dependencies initialized"}
+{"level":30,"time":1736701474152,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"AppModule dependencies initialized"}
+{"level":30,"time":1736701474152,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ConfigModule dependencies initialized"}
+{"level":30,"time":1736701474152,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ConfigModule dependencies initialized"}
+{"level":30,"time":1736701474152,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ConfigModule dependencies initialized"}
+{"level":30,"time":1736701474203,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"RabbitmqModule dependencies initialized"}
+{"level":30,"time":1736701474211,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"JwtModule dependencies initialized"}
+{"level":30,"time":1736701474339,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmCoreModule dependencies initialized"}
+{"level":30,"time":1736701474339,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmModule dependencies initialized"}
+{"level":30,"time":1736701474339,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmModule dependencies initialized"}
+{"level":30,"time":1736701474339,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmModule dependencies initialized"}
+{"level":30,"time":1736701474340,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"UsersModule dependencies initialized"}
+{"level":30,"time":1736701474341,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TasksModule dependencies initialized"}
+{"level":30,"time":1736701474341,"pid":64572,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"AuthModule dependencies initialized"}
+{"level":30,"time":1736701474361,"pid":64572,"hostname":"ildar-desktop","context":"RoutesResolver","msg":"AuthController {/auth}:"}
+{"level":30,"time":1736701474364,"pid":64572,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/register, POST} route"}
+{"level":30,"time":1736701474364,"pid":64572,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/confirmation_email, GET} route"}
+{"level":30,"time":1736701474365,"pid":64572,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/login, POST} route"}
+{"level":30,"time":1736701474365,"pid":64572,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/refresh, POST} route"}
+{"level":30,"time":1736701474365,"pid":64572,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/logout, POST} route"}
+{"level":30,"time":1736701474365,"pid":64572,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/reset_password_request, POST} route"}
+{"level":30,"time":1736701474365,"pid":64572,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/reset_password, POST} route"}
+{"level":30,"time":1736701474365,"pid":64572,"hostname":"ildar-desktop","context":"RoutesResolver","msg":"TasksController {/tasks}:"}
+{"level":30,"time":1736701474366,"pid":64572,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks/assigned, GET} route"}
+{"level":30,"time":1736701474366,"pid":64572,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks, POST} route"}
+{"level":30,"time":1736701474366,"pid":64572,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks/:id, PUT} route"}
+{"level":30,"time":1736701474367,"pid":64572,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks/:id, DELETE} route"}
+{"level":30,"time":1736701474367,"pid":64572,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks/:id, GET} route"}
+{"level":30,"time":1736701474370,"pid":64572,"hostname":"ildar-desktop","context":"NestApplication","msg":"Nest application successfully started"}
+{"level":30,"time":1736701474372,"pid":64572,"hostname":"ildar-desktop","context":"Logger","msg":"Application is running on http://localhost:3000"}
+{"level":30,"time":1736703898726,"pid":79779,"hostname":"ildar-desktop","context":"NestFactory","msg":"Starting Nest application..."}
+{"level":30,"time":1736703898753,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmModule dependencies initialized"}
+{"level":30,"time":1736703898753,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"AlsModule dependencies initialized"}
+{"level":30,"time":1736703898753,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ThrottlerModule dependencies initialized"}
+{"level":30,"time":1736703898754,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ConfigHostModule dependencies initialized"}
+{"level":30,"time":1736703898754,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"AppModule dependencies initialized"}
+{"level":30,"time":1736703898754,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ConfigModule dependencies initialized"}
+{"level":30,"time":1736703898754,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ConfigModule dependencies initialized"}
+{"level":30,"time":1736703898754,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ConfigModule dependencies initialized"}
+{"level":30,"time":1736703898816,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"RabbitmqModule dependencies initialized"}
+{"level":30,"time":1736703898828,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"JwtModule dependencies initialized"}
+{"level":30,"time":1736703898965,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmCoreModule dependencies initialized"}
+{"level":30,"time":1736703898965,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmModule dependencies initialized"}
+{"level":30,"time":1736703898965,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmModule dependencies initialized"}
+{"level":30,"time":1736703898966,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmModule dependencies initialized"}
+{"level":30,"time":1736703898966,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"UsersModule dependencies initialized"}
+{"level":30,"time":1736703898967,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TasksModule dependencies initialized"}
+{"level":30,"time":1736703898967,"pid":79779,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"AuthModule dependencies initialized"}
+{"level":30,"time":1736703898981,"pid":79779,"hostname":"ildar-desktop","context":"RoutesResolver","msg":"AuthController {/auth}:"}
+{"level":30,"time":1736703898984,"pid":79779,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/register, POST} route"}
+{"level":30,"time":1736703898985,"pid":79779,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/confirmation_email, GET} route"}
+{"level":30,"time":1736703898985,"pid":79779,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/login, POST} route"}
+{"level":30,"time":1736703898985,"pid":79779,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/refresh, POST} route"}
+{"level":30,"time":1736703898985,"pid":79779,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/logout, POST} route"}
+{"level":30,"time":1736703898986,"pid":79779,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/reset_password_request, POST} route"}
+{"level":30,"time":1736703898986,"pid":79779,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/reset_password, POST} route"}
+{"level":30,"time":1736703898986,"pid":79779,"hostname":"ildar-desktop","context":"RoutesResolver","msg":"TasksController {/tasks}:"}
+{"level":30,"time":1736703898986,"pid":79779,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks/assigned, GET} route"}
+{"level":30,"time":1736703898987,"pid":79779,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks, POST} route"}
+{"level":30,"time":1736703898987,"pid":79779,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks/:id, PUT} route"}
+{"level":30,"time":1736703898987,"pid":79779,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks/:id, DELETE} route"}
+{"level":30,"time":1736703898988,"pid":79779,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks/:id, GET} route"}
+{"level":30,"time":1736703898991,"pid":79779,"hostname":"ildar-desktop","context":"NestApplication","msg":"Nest application successfully started"}
+{"level":30,"time":1736703902068,"pid":79779,"hostname":"ildar-desktop","context":"AuthService","msg":"Registering user with email i*****k@gmail.com"}
+{"level":30,"time":1736703902362,"pid":79779,"hostname":"ildar-desktop","context":"AuthService","msg":"Email confirmation sent to i*****k@gmail.com"}
+{"level":30,"time":1736703902399,"pid":79779,"hostname":"ildar-desktop","context":"AuthService","msg":"User registered successfully i*****k@gmail.com"}
+{"level":30,"time":1736704101562,"pid":79779,"hostname":"ildar-desktop","context":"AuthService","msg":"Registering user with email i*****k@gmail.com"}
+{"level":30,"time":1736704101855,"pid":79779,"hostname":"ildar-desktop","context":"AuthService","msg":"Email confirmation sent to i*****k@gmail.com"}
+{"level":30,"time":1736704101868,"pid":79779,"hostname":"ildar-desktop","context":"AuthService","msg":"User registered successfully i*****k@gmail.com"}
+{"level":30,"time":1736704108917,"pid":79779,"hostname":"ildar-desktop","context":"AuthService","msg":"Confirming email for token: 6764..."}
+{"level":30,"time":1736704108929,"pid":79779,"hostname":"ildar-desktop","context":"AuthService","msg":"Email confirmed for user ID: 22"}
+{"level":30,"time":1736704163534,"pid":79779,"hostname":"ildar-desktop","context":"AuthService","msg":"Logging in user with email i*****k@gmail.com"}
+{"level":30,"time":1736704168299,"pid":79779,"hostname":"ildar-desktop","context":"AuthService","msg":"Logging in user with email i*****k@gmail.com"}
+{"level":30,"time":1736704169710,"pid":79779,"hostname":"ildar-desktop","context":"AuthService","msg":"Logging in user with email i*****k@gmail.com"}
+{"level":30,"time":1736704775459,"pid":85708,"hostname":"ildar-desktop","context":"NestFactory","msg":"Starting Nest application..."}
+{"level":30,"time":1736704775481,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmModule dependencies initialized"}
+{"level":30,"time":1736704775481,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"AlsModule dependencies initialized"}
+{"level":30,"time":1736704775482,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ThrottlerModule dependencies initialized"}
+{"level":30,"time":1736704775482,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ConfigHostModule dependencies initialized"}
+{"level":30,"time":1736704775482,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"AppModule dependencies initialized"}
+{"level":30,"time":1736704775482,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ConfigModule dependencies initialized"}
+{"level":30,"time":1736704775482,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ConfigModule dependencies initialized"}
+{"level":30,"time":1736704775482,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"ConfigModule dependencies initialized"}
+{"level":30,"time":1736704775533,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"RabbitmqModule dependencies initialized"}
+{"level":30,"time":1736704775542,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"JwtModule dependencies initialized"}
+{"level":30,"time":1736704775679,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmCoreModule dependencies initialized"}
+{"level":30,"time":1736704775679,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmModule dependencies initialized"}
+{"level":30,"time":1736704775680,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmModule dependencies initialized"}
+{"level":30,"time":1736704775680,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TypeOrmModule dependencies initialized"}
+{"level":30,"time":1736704775680,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"UsersModule dependencies initialized"}
+{"level":30,"time":1736704775680,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"TasksModule dependencies initialized"}
+{"level":30,"time":1736704775681,"pid":85708,"hostname":"ildar-desktop","context":"InstanceLoader","msg":"AuthModule dependencies initialized"}
+{"level":30,"time":1736704775697,"pid":85708,"hostname":"ildar-desktop","context":"RoutesResolver","msg":"AuthController {/auth}:"}
+{"level":30,"time":1736704775699,"pid":85708,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/register, POST} route"}
+{"level":30,"time":1736704775700,"pid":85708,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/confirmation_email, GET} route"}
+{"level":30,"time":1736704775700,"pid":85708,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/login, POST} route"}
+{"level":30,"time":1736704775701,"pid":85708,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/refresh, POST} route"}
+{"level":30,"time":1736704775701,"pid":85708,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/logout, POST} route"}
+{"level":30,"time":1736704775701,"pid":85708,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/reset_password_request, POST} route"}
+{"level":30,"time":1736704775701,"pid":85708,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/auth/reset_password, POST} route"}
+{"level":30,"time":1736704775701,"pid":85708,"hostname":"ildar-desktop","context":"RoutesResolver","msg":"TasksController {/tasks}:"}
+{"level":30,"time":1736704775702,"pid":85708,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks/assigned, GET} route"}
+{"level":30,"time":1736704775702,"pid":85708,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks, POST} route"}
+{"level":30,"time":1736704775702,"pid":85708,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks/:id, PUT} route"}
+{"level":30,"time":1736704775703,"pid":85708,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks/:id, DELETE} route"}
+{"level":30,"time":1736704775703,"pid":85708,"hostname":"ildar-desktop","context":"RouterExplorer","msg":"Mapped {/tasks/:id, GET} route"}
+{"level":30,"time":1736704775706,"pid":85708,"hostname":"ildar-desktop","context":"NestApplication","msg":"Nest application successfully started"}
+{"level":30,"time":1736704800678,"pid":85708,"hostname":"ildar-desktop","context":"AuthService","msg":"Logging in user with email i*****k@gmail.com"}
+{"level":40,"time":1736704800951,"pid":85708,"hostname":"ildar-desktop","context":"AuthService","msg":"Wrong password for user: i*****k@gmail.com"}
+{"level":30,"time":1736704860731,"pid":85708,"hostname":"ildar-desktop","context":"AuthService","msg":"Logging in user with email i*****k@gmail.com"}

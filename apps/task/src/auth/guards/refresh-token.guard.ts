@@ -19,26 +19,40 @@ export class RefreshTokenGuard implements CanActivate {
   ) {}
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const req = context.switchToHttp().getRequest<Request>()
-    const token = this.getTheTokenFromCookie(req)
+    const token = this.extractTokenFromCookie(req)
     if (!token) {
       throw new ForbiddenException()
     }
     try {
-      const payload = (await this.jwtService.verify(token)) as RefreshTokenType
+      const payload = (await this.jwtService.verifyAsync(
+        token
+      )) as RefreshTokenType
+
+      if (!this.isValidPayload(payload)) {
+        throw new UnauthorizedException('Invalid token payload')
+      }
+
       this.als
         .setValue('userId', payload.sub)
         .setValue('jti', payload.jti)
         .setValue('role', payload.role)
+
+      return true
     } catch (e) {
+      if (e instanceof UnauthorizedException) {
+        throw e
+      }
       throw new UnauthorizedException('The token is invalid or expired')
     }
-    return true
   }
 
-  private getTheTokenFromCookie(req: Request): string | undefined {
+  private isValidPayload(payload: RefreshTokenType): boolean {
+    return Boolean(payload?.sub && payload?.jti && payload?.role)
+  }
+
+  private extractTokenFromCookie(req: Request): string | undefined {
     if (req.headers.cookie) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const [_, token] = req.headers.cookie.split(`${REFRESH_COOKIE_TOKEN}=`)
+      const [, token] = req.headers.cookie.split(`${REFRESH_COOKIE_TOKEN}=`)
       return token
     }
     return undefined

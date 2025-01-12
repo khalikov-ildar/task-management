@@ -5,11 +5,9 @@ import {
   ModeratorDelete,
   ModeratorGet,
   ModeratorPost,
-  UserDelete,
   UserGet,
-  UserPost,
   UserPut
-} from '../shared/swagger/route-decorators'
+} from '../auth/decorators/routes'
 import { CreateTaskDto } from './dtos/create-task.dto'
 import {
   ApiBadRequestResponse,

@@ -22,6 +22,7 @@ import { RegisterUserResponseDto } from './dtos/register-user.response.dto'
 import { TokenService } from './services/token.service'
 import { Roles } from '../users/enums/roles.enum'
 import { maskEmail } from '../shared/utils/mask-email'
+import { sliceUuid } from '../shared/utils/slice-uuid'
 
 @Injectable()
 export class AuthService {
@@ -39,8 +40,13 @@ export class AuthService {
     name,
     password
   }: RegisterUserDto): Promise<RegisterUserResponseDto> {
+    this.logger.log('Registering user with email ' + maskEmail(email))
+
     const userExists = await this.usersService.existsByEmail(email)
     if (userExists) {
+      this.logger.warn(
+        'Attempt to register user with existing email ' + maskEmail(email)
+      )
       throw new ConflictException()
     }
 
@@ -54,27 +60,40 @@ export class AuthService {
       role: Roles.User
     })
 
+    this.logger.log('User registered successfully ' + maskEmail(email))
+
     return { email, name, isEmailConfirmed: false }
   }
 
   async confirmEmail(token: UUID): Promise<void> {
+    this.logger.log('Confirming email for token: ' + sliceUuid(token))
+
     const user = await this.usersService.findOneBy({
       emailConfirmationToken: token
     })
     if (!user) {
+      this.logger.warn(
+        'Invalid email confirmation token used: ' + sliceUuid(token)
+      )
       throw new BadRequestException()
     }
     user.emailConfirmationToken = null
     user.isEmailConfirmed = true
     this.usersService.updateBy({ id: user.id }, user)
+
+    this.logger.log('Email confirmed for user ID: ' + user.id)
   }
 
   async login({ email, password }: LoginUserDto): Promise<SignedTokenPair> {
+    this.logger.log('Logging in user with email ' + maskEmail(email))
+
     const existingUser = await this.usersService.findOneBy({ email })
     if (!existingUser) {
+      this.logger.warn('Attempt to login with non-existing email: ' + email)
       throw new UnauthorizedException('Wrong credentials were provided')
     }
     if (!existingUser.isEmailConfirmed) {
+      this.logger.warn('Attempt to login with unconfirmed email: ' + email)
       throw new ForbiddenException('The email is not confirmed')
     }
     const passwordMatches = await this.hashingService.compare(
@@ -82,13 +101,17 @@ export class AuthService {
       existingUser.password
     )
     if (!passwordMatches) {
+      this.logger.warn('Wrong password for user: ' + maskEmail(email))
       throw new UnauthorizedException('Wrong credentials were provided')
     }
 
-    return await this.tokenService.generateAndStoreTokenPair({
+    const tokenPair = await this.tokenService.generateAndStoreTokenPair({
       sub: existingUser.id,
       role: existingUser.role
     })
+
+    this.logger.log('User logged in successfully ' + maskEmail(email))
+    return tokenPair
   }
 
   async refresh(
@@ -106,6 +129,9 @@ export class AuthService {
   async processPasswordResetRequest(email: string): Promise<void> {
     const user = await this.usersService.findOneBy({ email })
     if (!user) {
+      this.logger.warn(
+        'No user with email during password reset request' + maskEmail(email)
+      )
       return
     }
 

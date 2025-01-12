@@ -36,6 +36,7 @@ import { RegisterUserResponseDto } from './dtos/register-user.response.dto'
 import { CookieSetterInterceptor } from './interceptors/cookie-setter.interceptor'
 import { CookieService } from './services/cookie.service'
 import { REFRESH_COOKIE_TOKEN } from './auth.constants'
+import { Throttle } from '@nestjs/throttler'
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -46,15 +47,12 @@ export class AuthController {
     private als: AlsService
   ) {}
 
+  @Throttle({ default: { limit: 3, ttl: 60000 } })
   @Auth(AuthType.None)
   @Post('register')
   @ApiCreatedResponse({
     type: RegisterUserResponseDto,
-    example: {
-      email: 'example@email.com',
-      name: 'Nick',
-      isEmailConfirmed: false
-    }
+    example: RegisterUserResponseDto.example()
   })
   @ApiConflictResponse({
     description: 'The user with the provided email is already registered'
@@ -79,6 +77,7 @@ export class AuthController {
     await this.authService.confirmEmail(token)
   }
 
+  @Throttle({ default: { limit: 3, ttl: 60000 } })
   @Auth(AuthType.None)
   @HttpCode(HttpStatus.OK)
   @UseInterceptors(CookieSetterInterceptor)

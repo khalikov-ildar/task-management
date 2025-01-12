@@ -1,12 +1,20 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger'
 
 export class RegisterUserResponseDto {
   @ApiProperty()
-  email: string;
+  email: string
 
   @ApiProperty()
-  name: string;
+  name: string
 
   @ApiProperty()
-  isEmailConfirmed: false;
+  isEmailConfirmed: false
+
+  static example(): RegisterUserResponseDto {
+    return {
+      email: 'example@email.com',
+      name: 'Nick',
+      isEmailConfirmed: false
+    }
+  }
 }

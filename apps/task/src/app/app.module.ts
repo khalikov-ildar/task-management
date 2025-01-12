@@ -10,15 +10,17 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import { UsersModule } from '../users/users.module'
 import { AuthModule } from '../auth/auth.module'
 import { AlsService } from '../als/als.service'
-import { AlsStore } from '../als/als.store-type'
-import { randomUUID } from 'crypto'
 import { AlsModule } from '../als/als.module'
 import { TasksModule } from '../tasks/tasks.module'
-import { AppOptions } from './app.options'
+import { AppOptions } from './config/app.options'
 import { RefreshToken } from '../auth/entities/refresh-token'
 import { ResetToken } from '../auth/entities/reset-token'
 import { Task } from '../tasks/entities/task.entity'
 import { User } from '../users/entities/user.entity'
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler'
+import { throttlerConfig } from './config/throttler.config'
+import { LoggerService } from './logger/logger.service'
+import { APP_GUARD } from '@nestjs/core'
 
 @Module({})
 export class AppModule implements NestModule {
@@ -26,8 +28,7 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply((req, res, next) => {
-        const store = new Map([['traceId', randomUUID()]]) satisfies AlsStore
-
+        const store = new Map()
         this.als.run(store, () => next())
       })
       .forRoutes('*')
@@ -55,10 +56,18 @@ export class AppModule implements NestModule {
           }
         }),
         RabbitmqModule.forRootAsync('RABBITMQ_WORKER'),
+        ThrottlerModule.forRoot(throttlerConfig),
         AlsModule,
         UsersModule,
         AuthModule,
         TasksModule
+      ],
+      providers: [
+        LoggerService,
+        {
+          provide: APP_GUARD,
+          useClass: ThrottlerGuard
+        }
       ]
     }
   }

@@ -3,7 +3,8 @@ import {
   ForbiddenException,
   Inject,
   Injectable,
-  InternalServerErrorException
+  InternalServerErrorException,
+  Logger
 } from '@nestjs/common'
 import { ConfigType } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
@@ -19,9 +20,12 @@ import {
   SignedTokenPair
 } from '../types/token.types'
 import { DateService } from '../../shared/services/date.service'
+import { LoggerService } from '../../app/logger/logger.service'
 
 @Injectable()
 export class TokenService {
+  private logger: Logger = new Logger(TokenService.name)
+
   constructor(
     private dateService: DateService,
     private jwtService: JwtService,
@@ -37,16 +41,19 @@ export class TokenService {
     jti,
     role
   }: RefreshTokenType): Promise<SignedTokenPair> {
+    this.logger.log('Refreshing tokens for user with id: ' + sub)
     const storedToken = await this.refreshRepo.findOne({
       where: {
         id: jti
       }
     })
     if (!storedToken) {
+      this.logger.fatal('The provided token is not stored: ' + jti)
       throw new InternalServerErrorException('The provided token is not stored')
     }
 
     if (storedToken.revoked) {
+      this.logger.warn(`Token ${jti} was already revoked for user ${sub}`)
       await this.refreshRepo.delete({
         user: {
           id: sub
@@ -62,6 +69,7 @@ export class TokenService {
   }
 
   async revokeToken(jti: UUID): Promise<void> {
+    this.logger.log('Revoking token with id: ' + jti)
     const storedToken = await this.refreshRepo.findOne({
       where: {
         id: jti
@@ -74,6 +82,7 @@ export class TokenService {
   }
 
   async generatePasswordToken(userId: number): Promise<UUID> {
+    this.logger.log('Generating password token for user with id: ' + userId)
     const passwordToken = this.resetRepo.create()
     passwordToken.id = randomUUID()
     passwordToken.userId = userId
@@ -113,6 +122,7 @@ export class TokenService {
   }
 
   private async signAndStoreRefresh(sub: number): Promise<string> {
+    this.logger.log('Generating refresh token for user with id: ' + sub)
     const jwtid = randomUUID()
     const refreshEntity = this.refreshRepo.create()
     refreshEntity.id = jwtid
