@@ -1,59 +1,59 @@
 import {
   CanActivate,
   ExecutionContext,
+  ForbiddenException,
   Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
-import { Request } from 'express';
-import { AlsService } from '../../als/als.service';
-import { JwtService } from '@nestjs/jwt';
+  UnauthorizedException
+} from '@nestjs/common'
+import { Request } from 'express'
+import { AlsService } from '../../als/als.service'
+import { JwtService } from '@nestjs/jwt'
 
-import { AccessTokenType } from '../types/token.types';
-import { Roles } from '../../users/enums/roles.enum';
-import { Reflector } from '@nestjs/core';
-import { ROLE_KEY } from '../decorators/role.decorator';
+import { AccessTokenType } from '../types/token.types'
+import { Roles } from '../../users/enums/roles.enum'
+import { Reflector } from '@nestjs/core'
+import { ROLE_KEY } from '../decorators/role.decorator'
 
 @Injectable()
 export class AccessTokenGuard implements CanActivate {
-  private defaultRole = Roles.User;
+  private defaultRole = Roles.User
 
   constructor(
     private als: AlsService,
     private jwtService: JwtService,
-    private reflector: Reflector,
+    private reflector: Reflector
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const req = context.switchToHttp().getRequest<Request>();
-    const token = this.getTheTokenFromAuthorization(req);
+    const req = context.switchToHttp().getRequest<Request>()
+    const token = this.getTheTokenFromAuthorization(req)
     if (!token) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException()
     }
     try {
-      const payload = (await this.jwtService.verify(token)) as AccessTokenType;
-      this.als.setValue('userId', payload.sub).setValue('role', payload.role);
+      const payload = (await this.jwtService.verify(token)) as AccessTokenType
+      this.als.setValue('userId', payload.sub).setValue('role', payload.role)
     } catch (e) {
-      throw new UnauthorizedException('The token is invalid or expired');
+      throw new UnauthorizedException('The token is invalid or expired')
     }
 
     const settedRole =
       this.reflector.getAllAndOverride<Roles>(ROLE_KEY, [
         context.getHandler(),
-        context.getClass(),
-      ]) ?? this.defaultRole;
+        context.getClass()
+      ]) ?? this.defaultRole
 
-    if (settedRole > this.als.getValue('role')) {
-      return false;
+    if (this.als.getValue('role') < settedRole) {
+      throw new ForbiddenException('You are not allowed to access this route')
     }
-    return true;
+    return true
   }
 
   private getTheTokenFromAuthorization(req: Request): string | undefined {
     if (req.headers.authorization) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const [_, token] = req.headers.authorization.split(' ');
-      return token;
+      const [, token] = req.headers.authorization.split(' ')
+      return token
     }
-    return undefined;
+    return undefined
   }
 }

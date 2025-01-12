@@ -2,13 +2,11 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
-    ports:
-      - "${RABBITMQ_PORT}:5672"
-      - "${RABBITMQ_MANAGEMENT_PORT}:15672"
     env_file:
       - path: '.env'
-    volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672
   postgres:
     image: postgres:16
     restart: always
@@ -16,6 +14,8 @@ services:
       - "5432:5432"
     env_file:
       - path: '.env'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
   mongo:
     image: mongo
     restart: always
@@ -23,6 +23,9 @@ services:
       - 27017:27017
     env_file:
       - path: '.env'
+    volumes:
+      - mongo_data:/data/db
 
 volumes:
-  rabbitmq_data:
+  postgres_data:
+  mongo_data:

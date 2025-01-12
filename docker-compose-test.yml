@@ -1,0 +1,15 @@
+services:
+  postgres-test:
+    image: postgres:16
+    restart: always
+    ports:
+      - "5433:5432"
+    env_file:
+      - path: '.env.test'
+  mongo-test:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    env_file:
+      - path: '.env.test'

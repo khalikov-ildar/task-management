@@ -4,40 +4,46 @@ import {
   Entity,
   ManyToMany,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
-import { Priority } from '../enums/task-priority.enum';
-import { User } from '../../users/entities/user.entity';
+  UpdateDateColumn
+} from 'typeorm'
+import { Priority } from '../enums/task-priority.enum'
+import { User } from '../../users/entities/user.entity'
 
 @Entity('tasks')
 export class Task {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
 
   @Column()
-  title: string;
+  title: string
 
   @Column()
-  description: string;
+  description: string
 
   @Column({ type: 'enum', enum: Priority })
-  priority: Priority;
+  priority: Priority
 
   @Column()
-  deadline: Date;
+  deadline: Date
 
   @Column({ type: 'boolean', default: false })
-  completed: boolean;
+  completed: boolean
 
-  @ManyToMany(() => User, (u) => u.assignedTasks)
-  assignees: User[];
+  @ManyToMany(() => User, (u) => u.assignedTasks, {
+    cascade: ['insert', 'update'],
+    onDelete: 'CASCADE'
+  })
+  assignees: User[]
 
-  @ManyToMany(() => User, (u) => u.allowedToEditTasks, { nullable: true })
-  editors?: User[];
+  @ManyToMany(() => User, (u) => u.allowedToEditTasks, {
+    nullable: true,
+    onDelete: 'CASCADE'
+  })
+  editors?: User[]
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt: Date
 
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt: Date
 }

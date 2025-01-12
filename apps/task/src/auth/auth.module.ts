@@ -1,22 +1,23 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from '../users/users.module';
-import { RefreshToken } from './entities/refresh-token';
-import { ResetToken } from './entities/reset-token';
-import { AuthController } from './auth.controller';
-import { IHashingService } from './services/hashing/i-hashing.service';
-import { HashingService } from './services/hashing/hashing.service';
-import { DateService } from '../shared/services/date.service';
-import { JwtModule } from '@nestjs/jwt';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { jwtConfiguration } from './config/jwt.config';
-import { AccessTokenGuard } from './guards/access-token.guard';
-import { AuthenticationGuard } from './guards/authentication.guard';
-import { APP_GUARD } from '@nestjs/core';
-import { RefreshTokenGuard } from './guards/refresh-token.guard';
-import { AuthService } from './auth.service';
-import { CookieService } from './services/cookie.service';
-import { TokenService } from './services/token.service';
+import { Module } from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { UsersModule } from '../users/users.module'
+import { RefreshToken } from './entities/refresh-token'
+import { ResetToken } from './entities/reset-token'
+import { AuthController } from './auth.controller'
+import { IHashingService } from './services/hashing/i-hashing.service'
+import { HashingService } from './services/hashing/hashing.service'
+import { DateService } from '../shared/services/date.service'
+import { JwtModule } from '@nestjs/jwt'
+import { ConfigModule, ConfigService } from '@nestjs/config'
+import { jwtConfiguration } from './config/jwt.config'
+import { AccessTokenGuard } from './guards/access-token.guard'
+import { AuthenticationGuard } from './guards/authentication.guard'
+import { APP_GUARD } from '@nestjs/core'
+import { RefreshTokenGuard } from './guards/refresh-token.guard'
+import { AuthService } from './auth.service'
+import { CookieService } from './services/cookie.service'
+import { TokenService } from './services/token.service'
+import { CookieSetterInterceptor } from './interceptors/cookie-setter.interceptor'
 
 @Module({
   imports: [
@@ -26,11 +27,11 @@ import { TokenService } from './services/token.service';
       inject: [ConfigService],
       useFactory: async (config: ConfigService) => {
         return {
-          secret: config.getOrThrow('JWT_SECRET'),
-        };
-      },
+          secret: config.getOrThrow('JWT_SECRET')
+        }
+      }
     }),
-    ConfigModule.forFeature(jwtConfiguration),
+    ConfigModule.forFeature(jwtConfiguration)
   ],
   providers: [
     { provide: IHashingService, useClass: HashingService },
@@ -38,10 +39,11 @@ import { TokenService } from './services/token.service';
     TokenService,
     AuthService,
     CookieService,
+    CookieSetterInterceptor,
     AccessTokenGuard,
     RefreshTokenGuard,
-    { provide: APP_GUARD, useClass: AuthenticationGuard },
+    { provide: APP_GUARD, useClass: AuthenticationGuard }
   ],
-  controllers: [AuthController],
+  controllers: [AuthController]
 })
 export class AuthModule {}

@@ -6,68 +6,97 @@ import {
   HttpStatus,
   Patch,
   Post,
-  Put,
-} from '@nestjs/common';
-import { Auth } from '../../auth/decorators/auth.decorator';
-import { AuthType } from '../../auth/guards/auth-type.enum';
-import { ApiBearerAuth } from '@nestjs/swagger';
+  Put
+} from '@nestjs/common'
+import { ApiBearerAuth } from '@nestjs/swagger'
+import { Role } from '../../auth/decorators/role.decorator'
+import { Roles } from '../../users/enums/roles.enum'
 
-export function ProtectedGet(
-  path?: string,
-  statusCode: HttpStatus = HttpStatus.OK,
-) {
-  return applyDecorators(
-    Auth(AuthType.Bearer),
-    HttpCode(statusCode),
-    ApiBearerAuth(),
-    Get(path),
-  );
+export function UserGet(path?: string, statusCode: HttpStatus = HttpStatus.OK) {
+  return applyDecorators(HttpCode(statusCode), ApiBearerAuth(), Get(path))
 }
 
-export function ProtectedPost(
+export function UserPost(
   path?: string,
-  statusCode: HttpStatus = HttpStatus.CREATED,
+  statusCode: HttpStatus = HttpStatus.CREATED
 ) {
-  return applyDecorators(
-    Auth(AuthType.Bearer),
-    HttpCode(statusCode),
-    ApiBearerAuth(),
-    Post(path),
-  );
+  return applyDecorators(HttpCode(statusCode), ApiBearerAuth(), Post(path))
 }
 
-export function ProtectedPatch(
+export function UserPatch(
   path?: string,
-  statusCode: HttpStatus = HttpStatus.OK,
+  statusCode: HttpStatus = HttpStatus.OK
 ) {
-  return applyDecorators(
-    Auth(AuthType.Bearer),
-    HttpCode(statusCode),
-    ApiBearerAuth(),
-    Patch(path),
-  );
+  return applyDecorators(HttpCode(statusCode), ApiBearerAuth(), Patch(path))
 }
 
-export function ProtectedPut(
-  path?: string,
-  statusCode: HttpStatus = HttpStatus.OK,
-) {
-  return applyDecorators(
-    Auth(AuthType.Bearer),
-    HttpCode(statusCode),
-    ApiBearerAuth(),
-    Put(path),
-  );
+export function UserPut(path?: string, statusCode: HttpStatus = HttpStatus.OK) {
+  return applyDecorators(HttpCode(statusCode), ApiBearerAuth(), Put(path))
 }
 
-export function ProtectedDelete(
+export function UserDelete(
   path?: string,
-  statusCode: HttpStatus = HttpStatus.OK,
+  statusCode: HttpStatus = HttpStatus.OK
+) {
+  return applyDecorators(HttpCode(statusCode), ApiBearerAuth(), Delete(path))
+}
+
+export function ModeratorGet(
+  path?: string,
+  statusCode: HttpStatus = HttpStatus.OK
 ) {
   return applyDecorators(
-    Auth(AuthType.Bearer),
     HttpCode(statusCode),
+    Role(Roles.Moderator),
     ApiBearerAuth(),
-    Delete(path),
-  );
+    Get(path)
+  )
+}
+
+export function ModeratorPost(
+  path?: string,
+  statusCode: HttpStatus = HttpStatus.CREATED
+) {
+  return applyDecorators(
+    HttpCode(statusCode),
+    Role(Roles.Moderator),
+    ApiBearerAuth(),
+    Post(path)
+  )
+}
+
+export function ModeratorPatch(
+  path?: string,
+  statusCode: HttpStatus = HttpStatus.OK
+) {
+  return applyDecorators(
+    HttpCode(statusCode),
+    Role(Roles.Moderator),
+    ApiBearerAuth(),
+    Patch(path)
+  )
+}
+
+export function ModeratorPut(
+  path?: string,
+  statusCode: HttpStatus = HttpStatus.OK
+) {
+  return applyDecorators(
+    HttpCode(statusCode),
+    Role(Roles.Moderator),
+    ApiBearerAuth(),
+    Put(path)
+  )
+}
+
+export function ModeratorDelete(
+  path?: string,
+  statusCode: HttpStatus = HttpStatus.OK
+) {
+  return applyDecorators(
+    HttpCode(statusCode),
+    Role(Roles.Moderator),
+    ApiBearerAuth(),
+    Delete(path)
+  )
 }
